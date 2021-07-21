@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 
-from EmployeeApp import views
+from . import views
 
 urlpatterns=[
     url(r'^department/$', views.departmentApi),
