@@ -20,6 +20,10 @@ export class ShowDepComponent implements OnInit {
     this.refreshDepList();
   }
 
+  DepartmentIdFilter: string="";
+  DepartmentNameFilter: string="";
+  DepartmentListWithoutFilter: any=[];
+
   addClick(){
     this.dep={
       DepartmentId: 0,
@@ -52,6 +56,31 @@ export class ShowDepComponent implements OnInit {
   refreshDepList(){
     this.service.getDepList().subscribe(data=>{
       this.DepartmentList=data;
+      this.DepartmentListWithoutFilter=data;
+    })
+  }
+
+  FilterFn(){
+    var DepartmentIdFilter = this.DepartmentIdFilter;
+    var DepartmentNameFilter = this.DepartmentNameFilter;
+
+    this.DepartmentList = this.DepartmentListWithoutFilter.filter(function(el:any){
+      return el.DepartmentId.toString().toLowerCase().includes(
+        DepartmentIdFilter.toString().trim().toLowerCase()
+      )&&
+      el.DepartmentName.toString().toLowerCase().includes(
+        DepartmentNameFilter.toString().trim().toLowerCase()
+      )
+    });
+  }
+
+  sortResult(prop:any,asc:any){
+    this.DepartmentList = this.DepartmentListWithoutFilter.sort(function(a:any,b:any){
+      if(asc){
+        return (a[prop]>b[prop])?1 : ((a[prop]<b[prop]) ?-1 :0)
+      }else{
+        return (b[prop]>a[prop])?1 : ((b[prop]<a[prop]) ?-1 :0)
+      }
     })
   }
 
