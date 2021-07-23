@@ -3,7 +3,7 @@
 (click)="addClick()"
 data-backdrop="static" data-keyboard="false"
 >
-    Add Department
+    Add Employee
   </button>
   
   <!-- Modal -->
@@ -16,7 +16,7 @@ data-backdrop="static" data-keyboard="false"
           (click)="closeClick()"></button>
         </div>
         <div class="modal-body">
-            <app-edit-dep [dep]="dep" *ngIf="ActivateAddEditDepComp"></app-edit-dep>
+            <app-edit-emp [emp]="emp" *ngIf="ActivateAddEditEmpComp"></app-edit-emp>
         </div>
       </div>
     </div>
@@ -25,15 +25,19 @@ data-backdrop="static" data-keyboard="false"
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Department ID</th>
-            <th>Department Name</th>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Date Joined</th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let dataItem of DepartmentList">
-            <td>{{dataItem.DepartmentId}}</td>
-            <td>{{dataItem.DepartmentName}}</td>
+        <tr *ngFor="let dataItem of EmployeeList">
+            <td>{{dataItem.EmployeeId}}</td>
+            <td>{{dataItem.EmployeeName}}</td>
+            <td>{{dataItem.Department}}</td>
+            <td>{{dataItem.DateOfJoining}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 (click)="editClick(dataItem)"

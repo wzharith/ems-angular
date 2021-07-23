@@ -7,13 +7,12 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./edit-dep.component.css']
 })
 export class EditDepComponent implements OnInit {
-  service: any;
 
-  constructor() { }
+  constructor(private service:SharedService) { }
 
   @Input() dep:any;
-  DepartmentId: string | undefined;
-  DepartmentName: string | undefined;
+  DepartmentId!: string;
+  DepartmentName!: string;
 
   ngOnInit(): void {
     this.DepartmentId = this.dep.DepartmentId;
@@ -23,7 +22,7 @@ export class EditDepComponent implements OnInit {
   addDepartment(){
     var val = {DepartmentId:this.DepartmentId,
                 DepartmentName:this.DepartmentName};
-    this.service.addDepartment(val).subscribe((res=>{
+    this.service.addDepartment(val).subscribe((res:any)=>{
       alert(res.toString());
     });
   }
@@ -31,7 +30,7 @@ export class EditDepComponent implements OnInit {
   updateDepartment(){
     var val = {DepartmentId:this.DepartmentId,
                 DepartmentName:this.DepartmentName};
-    this.service.updateDepartment(val).subscribe(res=>{
+    this.service.updateDepartment(val).subscribe((res:any)=>{
       alert(res.toString());
     });
   }

@@ -12,7 +12,7 @@ export class ShowDepComponent implements OnInit {
 
   DepartmentList:any=[];
   
-  ModalTitle:string | undefined;
+  ModalTitle!: string;
   ActivateAddEditDepComp:boolean=false;
   dep:any;
 
@@ -22,7 +22,7 @@ export class ShowDepComponent implements OnInit {
 
   addClick(){
     this.dep={
-      DeparmentId: 0,
+      DepartmentId: 0,
       DepartmentName: ""
     }
     this.ModalTitle = "Add Department";
@@ -33,6 +33,15 @@ export class ShowDepComponent implements OnInit {
     this.dep=item;
     this.ModalTitle="Edit Department";
     this.ActivateAddEditDepComp = true;
+  }
+
+  deleteClick(item: any){
+    if(confirm('Are you sure?')){
+      this.service.deleteDepartment(item.DepartmentId).subscribe(data=>{
+        alert(data.toString());
+        this.refreshDepList();
+      })
+    }
   }
 
   closeClick(){

@@ -7,8 +7,8 @@ import { DepartmentComponent } from './department/department.component';
 import { ShowDepComponent } from './department/show-dep/show-dep.component';
 import { EditDepComponent } from './department/edit-dep/edit-dep.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { ShowEmpComponent } from './department/show-emp/show-emp.component';
-import { EditEmpComponent } from './department/edit-emp/edit-emp.component';
+import { ShowEmpComponent } from './employee/show-emp/show-emp.component';
+import { EditEmpComponent } from './employee/edit-emp/edit-emp.component';
 import { SharedService } from './shared.service';
 
 import { HttpClientModule } from '@angular/common/http';
